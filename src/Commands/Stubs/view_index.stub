@@ -1,0 +1,35 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="container">
+        <h1>{{modelName}} List</h1>
+        <a href="{{ route('{{modelPlural}}.create') }}" class="btn btn-primary">Create {{modelName}}</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <!-- Add other columns here -->
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(${{modelVariablePlural}} as ${{modelVariable}})
+                    <tr>
+                        <td>{{ ${{modelVariable}}->id }}</td>
+                        <td>{{ ${{modelVariable}}->title }}</td>
+                        <!-- Display other model fields here -->
+                        <td>
+                            <a href="{{ route('{{modelPlural}}.edit', ${{modelVariable}}->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                            <form action="{{ route('{{modelPlural}}.destroy', ${{modelVariable}}->id) }}" method="POST" style="display:inline;">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+@endsection

@@ -1,0 +1,49 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\{{modelName}};
+
+class {{modelName}}Controller extends Controller
+{
+    public function index()
+    {
+        ${{modelVariablePlural}} = {{modelName}}::all();
+        return view('{{modelPlural}}.index', compact('{{modelVariablePlural}}'));
+    }
+
+    public function create()
+    {
+        return view('{{modelPlural}}.create');
+    }
+
+    public function store(Request $request)
+    {
+        {{modelName}}::create($request->except(['_token']));
+        return redirect()->route('{{modelPlural}}.index')->with('success', '{{modelName}} created successfully');
+    }
+
+    public function show({{modelName}} ${{modelVariable}})
+    {
+        return view('{{modelPlural}}.show', compact('{{modelVariable}}'));
+    }
+
+    public function edit({{modelName}} ${{modelVariable}})
+    {
+        return view('{{modelPlural}}.edit', compact('{{modelVariable}}'));
+    }
+
+    public function update(Request $request, {{modelName}} ${{modelVariable}})
+    {
+        ${{modelVariable}}->update($request->except(['_token']));
+        return redirect()->route('{{modelPlural}}.index')->with('success', '{{modelName}} updated successfully');
+    }
+
+
+    public function destroy({{modelName}} ${{modelVariable}})
+    {
+        ${{modelVariable}}->delete();
+        return redirect()->route('{{modelPlural}}.index')->with('success', '{{modelName}} deleted successfully');
+    }
+}

@@ -1,0 +1,5 @@
+
+/**
+ * Here is route for {{modelName}} CRUD
+ */
+Route::resource('{{modelPlural}}', 'App\Http\Controllers\{{modelName}}Controller');

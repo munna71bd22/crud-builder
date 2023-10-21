@@ -1,0 +1,19 @@
+{
+    "name": "smartapp/cb",
+    "description": "This is a an assignment provided by singularty company of Bangladesh.",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Smartapp\\Cb\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mehedi Hasan Munna",
+            "email": "munna71bd@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
